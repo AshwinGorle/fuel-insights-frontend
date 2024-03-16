@@ -1,1 +1,1 @@
-export const BASE_URL = "http://localhost:5585/"
+export const BASE_URL = "https://fuel-insights-backend.vercel.app/"
