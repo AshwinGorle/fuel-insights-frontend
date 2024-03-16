@@ -18,6 +18,7 @@ export default function RegisterPage() {
   const [tc, setTc] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  
   const handleUserRegister = async () => {
     try {
       const response = await fetch(`${BASE_URL}user/register`, {
