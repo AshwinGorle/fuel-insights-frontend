@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 
 import { RouterProvider } from "react-router-dom";
 
-import {  useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "./utils/userSlice.js";
 import { BASE_URL } from "./configs/config.js";
 
