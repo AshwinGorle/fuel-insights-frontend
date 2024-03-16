@@ -30,6 +30,13 @@ const Navbar = () => {
             </Link>
           }
           {
+            <Link to="/tripAnalysis">
+              <button className="text-white text-2xl px-[12px] rounded-[8px] bg-black-700 font-Inconsolata">
+                Trip Analysis
+              </button>
+            </Link>
+          }
+          {
             <Link to="/aboutus">
               <button className="  text-white text-2xl font-Inconsolata px-[12px] rounded-[8px] bg-black-700 ">
                 About Us

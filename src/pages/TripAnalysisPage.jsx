@@ -29,9 +29,10 @@ const TripAnalysisPage = () => {
     if (!(distanceTravel == 0 || fuelConsuption == 0)) {
       try {
         console.log(distanceTravel, fuelConsuption, vehicle);
-        const response = await fetch(`${BASE_URL}fuel-economy/analysis`, {
+        const response = await fetch(`http://localhost:5585/fuel-economy/analysis`, {
           headers: {
-            authorization: `Bearer ${localStorage.getItem("token")}`,
+            "authorization" : `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWY1YjJmODdiZjhlZDdjOGM1YWI5NDkiLCJ1c2VyRW1haWwiOiJha2FzaEBnbWFpbC5jb20iLCJpYXQiOjE3MTA2MDA5NTIsImV4cCI6MTcxMTAzMjk1Mn0.GnzUy8PRpOvq6AN1vyvYsNfUsl_B0DDiVnJFajlS0f8`,
+            "Content-Type": "application/json",
           },
           method: "POST",
           body: JSON.stringify({
@@ -42,7 +43,8 @@ const TripAnalysisPage = () => {
         });
 
         const data = await response.json();
-        console.log("the analysisResult data---", data);
+        setAnalysisResult(data);
+        console.log("analysis result ----", analysisResult)
       } catch (err) {
         console.log("analysis error : ", err);
       }
@@ -57,10 +59,10 @@ const TripAnalysisPage = () => {
   }
 
   return (
-    <div>
+    <div >
       <div>
-        <section className="bg-gray-50 bg-gradient-to-t from-gray-700 to-black">
-          <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+        <div className="bg-gray-50 bg-gradient-to-t from-gray-700 to-black mx-auto">
+          <div className="flex flex-col items-center justify-center px-6 py-8  md:h-screen lg:py-0">
             <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
               <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                 <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
@@ -69,9 +71,9 @@ const TripAnalysisPage = () => {
 
                 <form className="space-y-4 md:space-y-6">
                   {/* Distance travelled in km */}
-                  <div>
+                  { !analysisResult && <><div>
                     <label
-                      htmlFor="distanceTravel"
+                    
                       className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
                       Distance travelled
@@ -90,10 +92,10 @@ const TripAnalysisPage = () => {
                     />
                   </div>
 
-                  {/* fuelConsuption */}
+                  
                   <div>
                     <label
-                      htmlFor="fuelConsuption"
+                      
                       className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
                       Fuel Consuption
@@ -112,10 +114,10 @@ const TripAnalysisPage = () => {
                     />
                   </div>
 
-                  {/* vehicle class */}
+                  
                   <div>
                     <label
-                      htmlFor="vehicle"
+                      
                       className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
                       Vehcile Class
@@ -139,16 +141,105 @@ const TripAnalysisPage = () => {
                   <div className="flex justify-center">
                     <button
                       onClick={(e) => handleSubmit(e)}
-                      className=" text-white bg-blue-600 p-2 rounded-md"
+                      className=" text-white bg-blue-600 p-2 rounded-md px-20"
                     >
                       Submit
                     </button>
+                  </div></>}
+                  {/* //////////// the result section ////////////// */}
+                  {analysisResult && <div><div className="text-gray-600 flex justify-center "><h1>--------------------------------</h1></div>
+                  <div className=" flex gap-3">
+                  <div className="mb-2 ">
+                    <label
+                     
+                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    >
+                      Average Fuel Economy
+                    </label>
+                    <input
+                      type="number"
+                      value={analysisResult.averageFuelEconomy}
+                      className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="fuel consuption in litres"
+                      required=""
+                    />
                   </div>
+
+                  <div className="mb-2">
+                    <label
+                    
+                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    >
+                      Your Fuel Economy
+                    </label>
+                    <input
+                      type="number"
+                      value={analysisResult.userFuelEconomy}
+                      className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="fuel consuption in litres"
+                      required=""
+                    />
+
+                  </div>
+                  </div>
+                  <div className="mb-2">
+                    <label
+                      
+                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    >
+                      Classification
+                    </label>
+                    <div
+                      style={{ backgroundColor: `${analysisResult.classification}` }} 
+                      className="bg-gray-300 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="fuel consuption in litres"
+                      required=""
+                    > </div>
+
+                  </div>
+                   
+                  <div className="bg-gray-800 rounded-lg p-4">
+                      <div className="flex items-center justify-between mb-2">
+                        <div className="flex items-center">
+                          <div className="w-4 h-4 bg-green-500 rounded-full mr-2"></div>
+                          <span className="text-gray-300">Everything is fine</span>
+                        </div>
+
+                      </div>
+                      <div className="flex items-center justify-between mb-2">
+                        <div className="flex items-center">
+                          <div className="w-4 h-4 bg-yellow-500 rounded-full mr-2"></div>
+                          <span className="text-gray-300">Unusual behavior, visit your service center</span>
+                        </div>
+                      
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center">
+                          <div className="w-4 h-4 bg-red-500 rounded-full mr-2"></div>
+                          <span className="text-gray-300">High chance of fuel leakage or theft</span>
+                        </div>
+
+                      </div>
+                    </div>
+
+                    <div className="flex justify-center">
+                    <button
+                      onClick={(e) => setAnalysisResult(null)}
+                      className=" text-white bg-blue-600 p-2 rounded-md px-20"
+                    >
+                      Check Again
+                    </button>
+                  </div>
+
+                  </div>
+}
+                  
                 </form>
               </div>
             </div>
           </div>
-        </section>
+          {/* ///////////////////// */}
+        </div>
       </div>
     </div>
   );
