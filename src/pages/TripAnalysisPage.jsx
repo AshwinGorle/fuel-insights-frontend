@@ -29,9 +29,9 @@ const TripAnalysisPage = () => {
     if (!(distanceTravel == 0 || fuelConsuption == 0)) {
       try {
         console.log(distanceTravel, fuelConsuption, vehicle);
-        const response = await fetch(`http://localhost:5585/fuel-economy/analysis`, {
+        const response = await fetch(`${BASE_URL}fuel-economy/analysis`, {
           headers: {
-            "authorization" : `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWY1YjJmODdiZjhlZDdjOGM1YWI5NDkiLCJ1c2VyRW1haWwiOiJha2FzaEBnbWFpbC5jb20iLCJpYXQiOjE3MTA2MDA5NTIsImV4cCI6MTcxMTAzMjk1Mn0.GnzUy8PRpOvq6AN1vyvYsNfUsl_B0DDiVnJFajlS0f8`,
+            "authorization" : `Bearer ${localStorage.getItem('token')}`,
             "Content-Type": "application/json",
           },
           method: "POST",
