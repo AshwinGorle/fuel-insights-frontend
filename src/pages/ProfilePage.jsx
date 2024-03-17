@@ -150,8 +150,8 @@ export default function ProfilePage() {
   };
 
   return (
-    <div className="p-12 text-white">
-      <div className="gap-10 mb-8 text-white">
+    <div className="p-12 text-white ">
+      <div className="gap-10 mb-8 text-white mt-20">
         <div className=" h-full border-r-2 border-gray-200  max-w-l w-full text-white">
           <form className="flex flex-col gap-4 mr-4 text-white">
             <div className="flex flex-col gap-4 justify-center items-center text-white">
@@ -196,8 +196,9 @@ export default function ProfilePage() {
             <div className="flex flex-row gap-4">
               <div className="w-1/3">
                 <label
+                
                   htmlFor="name"
-                  className="text-base font-medium text-gray-900"
+                  className="text-base font-medium text-gray-300"
                 >
                   {" "}
                   Full Name{" "}

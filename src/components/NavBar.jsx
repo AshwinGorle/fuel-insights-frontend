@@ -77,11 +77,11 @@ const Navbar = () => {
             
           }
           {
-            <Link to="/profile">
+            
               <button className=" text-white text-[32px] px-[12px] rounded- bg-black-700">
                 <FaUserCircle></FaUserCircle>
               </button>
-            </Link>
+          
           }
         </div>
       </div>
