@@ -1,42 +1,59 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect, useRef } from 'react';
+import AvatarImg from "../assets/Avatar.jpg";
+import { FaGithub } from 'react-icons/fa';
 
-export default function AboutUs() {
+const cardsData = [
+  { id: 1, name: 'Bhishek Parmar', profile: 'Full Stack Developer', github: 'https://github.com/Bhishek-Parmar', avatarUrl: AvatarImg },
+  { id: 2, name: 'Ashwin Gorle', profile: 'Full Stack Developer', github: 'https://github.com/ashwinG162', avatarUrl: AvatarImg },
+  { id: 3, name: 'Chirag Patil', profile: 'Full Stack Developer', github: 'https://github.com/chiragpatil25', avatarUrl: AvatarImg },
+  { id: 4, name: 'Akshansh Gupta', profile: 'Full Stack Developer', github: 'https://github.com/Akshansh99', avatarUrl: AvatarImg },
+];
+
+ const AboutUs = () => {
+  const [start, setStart] = useState(0);
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const nextStart = (start + 1) % (cardsData.length - 2);
+      setStart(nextStart);
+      if (containerRef.current) {
+        containerRef.current.scrollLeft = nextStart * containerRef.current.offsetWidth;
+      }
+    }, 3000); // Change slide every 3 seconds
+
+    return () => clearInterval(interval);
+  }, [start]);
+
   return (
-    <div>
-       <section class="flex items-center py-10 xl:h-screen font-poppins ">
-        <div class="justify-center flex-1 max-w-6xl py-4 mx-auto lg:py-6 md:px-6">
-            <div class="flex flex-wrap ">
-                <div class="w-full px-4 mb-5 lg:w-1/2 lg:mb-0">
-                    <div class="relative">
-                        <img src="https://static.vecteezy.com/system/resources/previews/035/728/236/non_2x/talking-to-a-chatbot-online-on-laptop-computer-communication-with-a-chat-bot-customer-service-and-support-artificial-intelligence-concept-vector.jpg" alt=""
-                            class="relative z-40 object-cover w-full h-96 lg:rounded-tr-[80px] lg:rounded-bl-[80px] rounded"/>
-                        <div
-                            class="absolute z-10 hidden w-full h-full bg-blue-400 rounded-bl-[80px] rounded -bottom-6 right-6 lg:block">
-                        </div>
-                    </div>
-                </div>
-                <div class="w-full px-4 mb-10 lg:w-1/2 lg:mb-0 ">
-                    <div class="relative">
-                        <h1
-                            class="absolute -top-20   left-0 text-[20px] lg:text-[100px] text-black font-bold  opacity-20 md:block">
-                            About Us
-                        </h1>
-                        <h1 class="pl-2 text-3xl font-bold border-l-8 border-blue-400 md:text-5xl text-blue-500">
-                            Welcome to our site
-                        </h1>
-                    </div>
-                    <p class="mt-6 mb-10 text-base leading-7 text-gray-600 ">
-                    EduNetAi was founded by a team of passionate educators and AI enthusiasts who saw the opportunity to bridge the gap between traditional education and the rapidly evolving world of AI. We are committed to creating a platform that empowers both students and teachers, leveraging AI to enhance the learning process and unlock new opportunities for growth and development.
-                    </p>
-                    <Link to="#"
-                        class="px-4 py-3 text-gray-50 transition-all transform bg-blue-400 rounded-[80px] hover:bg-blue-500 dark:hover:text-gray-100 dark:text-gray-100 font-bold">
-                        Learn more
-                    </Link>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div className=' h-screen absolute top-0  bg-gradient-to-t from-gray-700 to-black min-h-screen w-screen'>
+
+    <div className='text-white flex justify-center items-center mt-20 text-5xl'>
+        <h1 className=' font-Inconsolata mt-20'>About Us</h1>
     </div>
-  )
-}
+    <div className="flex justify-center items-center overflow-hidden mt-20">
+      <div ref={containerRef} className="flex overflow-x-hidden scroll-snap-type-x-mandatory" style={{ scrollBehavior: 'smooth', WebkitOverflowScrolling: 'touch' }}>
+        {cardsData.map((card) => (
+          <div key={card.id} className="w-1/3 px-4 flex-none scroll-snap-align-start">
+            <div className=" p-4 bg-gradient-to-b from-gray-700 to-black shadow-md shadow-blacks border b border-gray-500 rounded-lg">
+              <img src={card.avatarUrl} alt="Avatar" className="rounded-full mx-auto mb-4" />
+              <p className="text-center text-white font-bold">{card.name}</p>
+              <p className="text-center text-gray-300">{card.profile}</p>
+              <a href={card.github} target="_blank" rel="noopener noreferrer"> 
+              <button className="w-1/2 block mx-auto mt-2 rounded-full bg-gray-200 hover:shadow-lg font-semibold text-white px-6 py-2">
+                <div className='flex justify-center items-center text-black'>
+                  GitHub <FaGithub className='ml-2 text-[25px]' />
+                </div>
+              </button>
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+    </div>
+  );
+};
+
+
+export default AboutUs;

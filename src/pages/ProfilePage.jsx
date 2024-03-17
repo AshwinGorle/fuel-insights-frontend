@@ -150,11 +150,11 @@ export default function ProfilePage() {
   };
 
   return (
-    <div className="p-12">
-      <div className="gap-10 mb-8">
-        <div className=" h-full border-r-2 border-gray-200  max-w-l w-full ">
-          <form className="flex flex-col gap-4 mr-4">
-            <div className="flex flex-col gap-4 justify-center items-center">
+    <div className="p-12 text-white">
+      <div className="gap-10 mb-8 text-white">
+        <div className=" h-full border-r-2 border-gray-200  max-w-l w-full text-white">
+          <form className="flex flex-col gap-4 mr-4 text-white">
+            <div className="flex flex-col gap-4 justify-center items-center text-white">
               <img
                 src={
                   avatarUrl
@@ -165,7 +165,7 @@ export default function ProfilePage() {
                 className="rounded-full h-44 w-44 object-cover cursor-pointer self-center mt-2"
               />
               
-              <input id="file-input" type="file" className="" onChange={(e)=>setAvatar(e.target.files[0])} />
+              <input  id="file-input" type="file" className="text-white" onChange={(e)=>setAvatar(e.target.files[0])} />
               <div>
                 {!user?.avatar && (
                   <button

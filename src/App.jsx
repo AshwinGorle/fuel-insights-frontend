@@ -7,6 +7,7 @@ import { RouterProvider } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "./utils/userSlice.js";
 import { BASE_URL } from "./configs/config.js";
+import Navbar from "./components/NavBar.jsx";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,7 +34,9 @@ function App() {
     getUserByToken();
   }, []);
 
-  return <RouterProvider router={appRouter} />;
+  return (
+      <RouterProvider router={appRouter} />
+  )
 }
 
 export default App;

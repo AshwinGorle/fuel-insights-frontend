@@ -1,8 +1,20 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
+import { useSelector } from "react-redux";
+
 
 const Navbar = () => {
+  const user = useSelector((store) => store.userSlice.user);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.clear();
+    dispatch(addUser(null));
+    navigate("/");
+  };
   return (
     <div className=" flex justify-between items-center py-3 absolute mx-auto z-10 text-white w-full ">
       {/* logo */}
@@ -32,7 +44,14 @@ const Navbar = () => {
           {
             <Link to="/tripAnalysis">
               <button className="text-white text-2xl px-[12px] rounded-[8px] bg-black-700 font-Inconsolata">
-                Trip Analysis
+                TripAnalysis
+              </button>
+            </Link>
+          }
+          {
+            <Link to="/liveTracking">
+              <button className="text-white text-2xl px-[12px] rounded-[8px] bg-black-700 font-Inconsolata">
+                LiveTracking
               </button>
             </Link>
           }
@@ -49,6 +68,13 @@ const Navbar = () => {
                 Contact Us
               </button>
             </Link>
+          }
+          {
+           
+             user && <button onClick={()=>handleLogout()} className=" text-white text-2xl font-Inconsolata px-[12px] rounded-[8px] bg-black-700  ">
+                Logout
+              </button>
+            
           }
           {
             <Link to="/profile">

@@ -1,6 +1,7 @@
 import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 
+import { Dashboard } from "./pages/Dashboard.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
 import LayoutPage from "./pages/LayoutPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
@@ -10,6 +11,7 @@ import ProfilePage from "./pages/ProfilePage.jsx";
 import Contact from "./pages/ContactPage.jsx";
 import AboutUs from "./pages/AboutUsPage.jsx";
 import TripAnalysisPage from "./pages/TripAnalysisPage.jsx";
+import LiveTracking from "./pages/LiveTracking.jsx";
 
 const appRouter = createBrowserRouter([
   {
@@ -38,17 +40,25 @@ const appRouter = createBrowserRouter([
         element: <ProfilePage />,
       },
       {
-        path: "/contact",
+        path: "/contactus",
         element: <Contact />,
       },
       {
-        path: "/about",
+        path: "/aboutus",
         element: <AboutUs />,
       },
       {
         path: "/tripAnalysis",
         element: <TripAnalysisPage />,
       },
+      {
+        path : "/liveTracking",
+        element : <LiveTracking/>
+      },
+      {
+        path : "/dashboard",
+        element : <Dashboard/>
+      }
     ],
   },
 ]);

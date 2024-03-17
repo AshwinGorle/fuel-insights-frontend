@@ -3,8 +3,11 @@ import React from "react";
 import homeBgVideo from "../assets/homoBgVideo.mp4";
 // import homeBgVideo from "../assets/HomeBgVideoNew.mp4";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const HomePage = () => {
+  const user = useSelector((store) => store.userSlice.user);
+  
   return (
     // video component
     <div className=" overflow-hidden w-full h-screen">
@@ -25,9 +28,34 @@ const HomePage = () => {
             Fuel Insights: Protecting Every Drop, Preventing Every Drain
           </h1>
         </div>
-        <div className=" mt-10">
+         { <div className=" mt-10">
           {
-            <Link to="/login">
+            !user && <Link to="/login">
+              <a
+                href="#_"
+                class="inline-flex items-center justify-center w-full px-4 py-2 mb-2 text-lg text-white bg-red-600 rounded-md hover:bg-red-400 sm:w-auto sm:mb-0"
+                data-primary="green-400"
+                data-rounded="rounded-2xl"
+                data-primary-reset="{}"
+              >
+                Get Started
+                <svg
+                  class="w-4 h-4 ml-1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </a>
+            </Link>
+          }
+          {
+            user && <Link to="/tripAnalysis">
               <a
                 href="#_"
                 class="inline-flex items-center justify-center w-full px-4 py-2 mb-2 text-lg text-white bg-red-600 rounded-md hover:bg-red-400 sm:w-auto sm:mb-0"
@@ -52,6 +80,7 @@ const HomePage = () => {
             </Link>
           }
         </div>
+}
       </div>
 
       {/* services card */}
