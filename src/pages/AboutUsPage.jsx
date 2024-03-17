@@ -4,9 +4,9 @@ import { FaGithub } from 'react-icons/fa';
 
 const cardsData = [
   { id: 1, name: 'Bhishek Parmar', profile: 'Full Stack Developer', github: 'https://github.com/Bhishek-Parmar', avatarUrl: AvatarImg },
-  { id: 2, name: 'Ashwin Gorle', profile: 'Full Stack Developer', github: 'https://github.com/ashwinG162', avatarUrl: AvatarImg },
-  { id: 3, name: 'Chirag Patil', profile: 'Full Stack Developer', github: 'https://github.com/chiragpatil25', avatarUrl: AvatarImg },
-  { id: 4, name: 'Akshansh Gupta', profile: 'Full Stack Developer', github: 'https://github.com/Akshansh99', avatarUrl: AvatarImg },
+  { id: 2, name: 'Ashwin Gorle', profile: 'Full Stack Developer', github: 'https://github.com/AshwinGorle', avatarUrl: AvatarImg },
+  { id: 3, name: 'Chirag Patil', profile: 'Full Stack Developer', github: 'https://github.com/Chiragpatil05', avatarUrl: AvatarImg },
+  { id: 4, name: 'Akshansh Gupta', profile: 'Full Stack Developer', github: 'https://github.com/akshanshdcode', avatarUrl: AvatarImg },
 ];
 
  const AboutUs = () => {
