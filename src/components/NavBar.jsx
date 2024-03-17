@@ -42,14 +42,14 @@ const Navbar = () => {
             </Link>
           }
           {
-            <Link to="/tripAnalysis">
+            user && <Link to="/tripAnalysis">
               <button className="text-white text-2xl px-[12px] rounded-[8px] bg-black-700 font-Inconsolata">
                 TripAnalysis
               </button>
             </Link>
           }
           {
-            <Link to="/liveTracking">
+            user &&  <Link to="/liveTracking">
               <button className="text-white text-2xl px-[12px] rounded-[8px] bg-black-700 font-Inconsolata">
                 LiveTracking
               </button>
