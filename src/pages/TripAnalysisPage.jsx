@@ -11,7 +11,7 @@ const TripAnalysisPage = () => {
 
   const [distanceTravel, setDistanceTravel] = useState(0);
   const [fuelConsuption, setFuelConsuption] = useState(0);
-  const [vehicle, setVehicle] = useState("HatchBack");
+  const [vehicle, setVehicle] = useState("Compact");
   const [analysisResult, setAnalysisResult] = useState(null);
   const [error, setError] = useState("");
 
