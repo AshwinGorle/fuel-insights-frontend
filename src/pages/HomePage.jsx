@@ -12,45 +12,36 @@ const HomePage = () => {
     const timeout = setTimeout(() => {
       setDisplaySecondLine(true);
     }, 3000);
-  
+
     return () => clearTimeout(timeout);
   }, []);
-  
 
   return (
     // video component
-    <div className=" overflow-hidden w-full h-screen">
-      {/* <div className="fixed top-20 w-full h-full bg-black opacity-50 ">
-        
-      </div> */}
+    <div className="relative w-full h-screen overflow-hidden flex flex-col justify-center  ">
+      <div className="absolute z-0 w-full h-full bg-black opacity-50 "></div>
       <video
         src={homeBgVideo}
         autoPlay="true"
         loop="true"
         muted="true"
-        className=""
+        className="absolute inset-0 w-full h-full object-cover"
       ></video>
-
       {/* tagline and description */}
-      <div className=" absolute top-20 w-full h-full top-0 left-0 "></div>
-      <div className=" absolute top-20 w-full h-full flex flex-col text-white justify-center text-center p-4">
-        <div className="mx-auto">
-          <div className="flex flex-col md:flex-row self-start align-start ml-auto">
-            <h1 className=" align-start justify-start animate-typing overflow-hidden whitespace-nowrap border-r-4 border-r-white pr-5 text-white font-bold font-Lexend  md:text-2xl text-sm ">
-              Fuel Insights:
-            </h1>
-            {displaySecondLine && <h1 className="  animate-typing  delay-500 overflow-hidden whitespace-nowrap border-r-4 border-r-white pr-5  text-white font-bold font-Lexend  md:text-2xl text-sm ">
-              Protecting Every Drop, Preventing Every Drain
-            </h1>}
+      {/* <div className=" absolute top-20 w-full h-full left-0 "></div> */}
+      <div className=" relative z-50 w-full flex flex-col items-center text-white  p-4">
+        <div className="">
+          <div className="animate-pulse text-wrap text-center md:text-2xl text-lg font-bold font-Lexend">
+            Fuel Insights: Protecting Every Drop, Preventing Every Drain
           </div>
         </div>
         {
-          <div className=" mt-10">
+          <div className="absolute lg:mt-16 mt-24">
             {!user && (
               <Link to="/login">
                 <a
                   href="#_"
-                  class="inline-flex items-center justify-center w-full px-4 py-2 mb-2 text-lg text-white bg-red-600 rounded-md hover:bg-red-400 sm:w-auto sm:mb-0"
+                  className="inline-flex items-center justify-center w-full px-4 py-2 mb-2 md:text-lg text-sm text-white bg-red-600 rounded-md hover:bg-red-400 sm:w-auto sm:mb-0"
                   data-primary="green-400"
                   data-rounded="rounded-2xl"
                   data-primary-reset="{}"
@@ -99,7 +90,6 @@ const HomePage = () => {
           </div>
         }
       </div>
-
       {/* services card */}
       {/* <div className=" flex mt-">
           
