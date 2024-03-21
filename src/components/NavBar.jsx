@@ -28,7 +28,7 @@ const Navbar = () => {
         {/* logo */}
         <Link
           to="/"
-          className=" text-lg md:text-3xl font-Michroma text-red-600 "
+          className=" text-2xl md:text-3xl font-Michroma text-red-600 "
         >
           Fuel Insights
         </Link>
