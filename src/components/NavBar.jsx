@@ -17,17 +17,19 @@ const Navbar = () => {
     navigate("/");
   };
 
-  const handleDropdownClick = (path)=>{
-        setMenuOpen(!menuOpen);
-        navigate(path);
-  }
+  const handleDropdownClick = (path) => {
+    setMenuOpen(!menuOpen);
+    navigate(path);
+  };
 
-  
   return (
     <div className="py-3 px-6 bg-black text-white relative">
       <div className="flex justify-between items-center">
         {/* logo */}
-        <Link to="/" className=" text-lg md:text-3xl font-Michroma text-red-600 ">
+        <Link
+          to="/"
+          className=" text-lg md:text-3xl font-Michroma text-red-600 "
+        >
           Fuel Insights
         </Link>
 
@@ -40,7 +42,6 @@ const Navbar = () => {
         </button>
 
         {
-          
           <div className="lex gap-2 md:block lg:block hidden ">
             <Link to="/" className="nav-link py-2 px-4 hover:bg-gray-700">
               Home
@@ -67,7 +68,10 @@ const Navbar = () => {
                 </Link>
               </>
             )}
-            <Link to="/aboutus" className="nav-link py-2 px-4 hover:bg-gray-700">
+            <Link
+              to="/aboutus"
+              className="nav-link py-2 px-4 hover:bg-gray-700"
+            >
               About Us
             </Link>
             <Link
@@ -89,19 +93,21 @@ const Navbar = () => {
               </button>
             )}
           </div>
-       
         }
       </div>
-
 
       {/* Dropdown menu */}
       <div
         className={`${
           menuOpen ? "block" : "hidden"
-        } absolute top-full left-0 w-full bg-black text-white transition-all duration-300 ease-in-out`}
+        } absolute z-50 top-full left-0 w-full bg-black text-white transition-all duration-300 ease-in-out`}
       >
-        <div className="flex flex-col" >
-          <Link to="/" className="nav-link py-2 px-4 hover:bg-gray-700" onClick={()=>handleDropdownClick('/')}>
+        <div className="flex flex-col">
+          <Link
+            to="/"
+            className="nav-link py-2 px-4 hover:bg-gray-700"
+            onClick={() => handleDropdownClick("/")}
+          >
             Home
           </Link>
           {user && (
@@ -109,34 +115,37 @@ const Navbar = () => {
               <Link
                 to="/dashboard"
                 className="nav-link py-2 px-4 hover:bg-gray-700"
-                onClick={()=>handleDropdownClick('/dashboard')}
+                onClick={() => handleDropdownClick("/dashboard")}
               >
                 Dashboard
               </Link>
               <Link
                 to="/tripAnalysis"
                 className="nav-link py-2 px-4 hover:bg-gray-700"
-                onClick={()=>handleDropdownClick('/tripAnalysis')}
+                onClick={() => handleDropdownClick("/tripAnalysis")}
               >
                 Trip Analysis
               </Link>
               <Link
                 to="/liveTracking"
                 className="nav-link py-2 px-4 hover:bg-gray-700"
-                onClick={()=>handleDropdownClick('/liveTracking')}
+                onClick={() => handleDropdownClick("/liveTracking")}
               >
                 Live Tracking
               </Link>
             </>
           )}
-          <Link to="/aboutus" className="nav-link py-2 px-4 hover:bg-gray-700" 
-          onClick={()=>handleDropdownClick('/aboutus')}>
+          <Link
+            to="/aboutus"
+            className="nav-link py-2 px-4 hover:bg-gray-700"
+            onClick={() => handleDropdownClick("/aboutus")}
+          >
             About Us
           </Link>
           <Link
             to="/contactus"
             className="nav-link py-2 px-4 hover:bg-gray-700"
-            onClick={()=>handleDropdownClick('/contactus')}
+            onClick={() => handleDropdownClick("/contactus")}
           >
             Contact Us
           </Link>
