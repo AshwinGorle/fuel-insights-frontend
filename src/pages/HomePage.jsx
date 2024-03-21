@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 // import homeBgVideo from "../assets/bgVideo.mp4";
 import homeBgVideo from "../assets/homoBgVideo.mp4";
 // import homeBgVideo from "../assets/HomeBgVideoNew.mp4";
@@ -7,11 +7,22 @@ import { useSelector } from "react-redux";
 
 const HomePage = () => {
   const user = useSelector((store) => store.userSlice.user);
+  const [displaySecondLine, setDisplaySecondLine] = useState(false);
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setDisplaySecondLine(true);
+    }, 3000);
   
+    return () => clearTimeout(timeout);
+  }, []);
+  
+
   return (
     // video component
     <div className=" overflow-hidden w-full h-screen">
-      <div className="fixed w-full h-full bg-black opacity-50 ">fjjkjkjg</div>
+      {/* <div className="fixed top-20 w-full h-full bg-black opacity-50 ">
+        
+      </div> */}
       <video
         src={homeBgVideo}
         autoPlay="true"
@@ -21,66 +32,72 @@ const HomePage = () => {
       ></video>
 
       {/* tagline and description */}
-      <div className=" absolute w-full h-full top-0 left-0 "></div>
-      <div className=" absolute top-0 w-full h-full flex flex-col text-white justify-center text-center p-4">
-        <div className=" w-max mx-auto">
-          <h1 className="animate-typing overflow-hidden whitespace-nowrap border-r-4 border-r-white pr-5  text-white font-bold font-Lexend text-2xl">
-            Fuel Insights: Protecting Every Drop, Preventing Every Drain
-          </h1>
+      <div className=" absolute top-20 w-full h-full top-0 left-0 "></div>
+      <div className=" absolute top-20 w-full h-full flex flex-col text-white justify-center text-center p-4">
+        <div className="mx-auto">
+          <div className="flex flex-col md:flex-row self-start align-start ml-auto">
+            <h1 className=" align-start justify-start animate-typing overflow-hidden whitespace-nowrap border-r-4 border-r-white pr-5 text-white font-bold font-Lexend  md:text-2xl text-sm ">
+              Fuel Insights:
+            </h1>
+            {displaySecondLine && <h1 className="  animate-typing  delay-500 overflow-hidden whitespace-nowrap border-r-4 border-r-white pr-5  text-white font-bold font-Lexend  md:text-2xl text-sm ">
+              Protecting Every Drop, Preventing Every Drain
+            </h1>}
+          </div>
         </div>
-         { <div className=" mt-10">
-          {
-            !user && <Link to="/login">
-              <a
-                href="#_"
-                class="inline-flex items-center justify-center w-full px-4 py-2 mb-2 text-lg text-white bg-red-600 rounded-md hover:bg-red-400 sm:w-auto sm:mb-0"
-                data-primary="green-400"
-                data-rounded="rounded-2xl"
-                data-primary-reset="{}"
-              >
-                Get Started
-                <svg
-                  class="w-4 h-4 ml-1"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
+        {
+          <div className=" mt-10">
+            {!user && (
+              <Link to="/login">
+                <a
+                  href="#_"
+                  class="inline-flex items-center justify-center w-full px-4 py-2 mb-2 text-lg text-white bg-red-600 rounded-md hover:bg-red-400 sm:w-auto sm:mb-0"
+                  data-primary="green-400"
+                  data-rounded="rounded-2xl"
+                  data-primary-reset="{}"
                 >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
-              </a>
-            </Link>
-          }
-          {
-            user && <Link to="/tripAnalysis">
-              <a
-                href="#_"
-                class="inline-flex items-center justify-center w-full px-4 py-2 mb-2 text-lg text-white bg-red-600 rounded-md hover:bg-red-400 sm:w-auto sm:mb-0"
-                data-primary="green-400"
-                data-rounded="rounded-2xl"
-                data-primary-reset="{}"
-              >
-                Get Started
-                <svg
-                  class="w-4 h-4 ml-1"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
+                  Get Started
+                  <svg
+                    class="w-4 h-4 ml-1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </a>
+              </Link>
+            )}
+            {user && (
+              <Link to="/tripAnalysis">
+                <a
+                  href="#_"
+                  class="inline-flex items-center justify-center w-full px-4 py-2 mb-2 text-lg text-white bg-red-600 rounded-md hover:bg-red-400 sm:w-auto sm:mb-0"
+                  data-primary="green-400"
+                  data-rounded="rounded-2xl"
+                  data-primary-reset="{}"
                 >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
-              </a>
-            </Link>
-          }
-        </div>
-}
+                  Get Started
+                  <svg
+                    class="w-4 h-4 ml-1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </a>
+              </Link>
+            )}
+          </div>
+        }
       </div>
 
       {/* services card */}

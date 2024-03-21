@@ -26,15 +26,14 @@ const cardsData = [
   }, [start]);
 
   return (
-    <div className=' h-screen absolute top-0  bg-gradient-to-t from-gray-700 to-black min-h-screen w-screen'>
-
+    <div className=' h-full   bg-gradient-to-t from-gray-700 to-black min-h-screen w-screen'>
     <div className='text-white flex justify-center items-center mt-20 text-5xl'>
-        <h1 className=' font-Inconsolata mt-20'>About Us</h1>
+        <h1 className=' font-Inconsolata mt-0'>About Us</h1>
     </div>
-    <div className="flex justify-center items-center overflow-hidden mt-20">
-      <div ref={containerRef} className="flex overflow-x-hidden scroll-snap-type-x-mandatory" style={{ scrollBehavior: 'smooth', WebkitOverflowScrolling: 'touch' }}>
+    <div className="flex justify-center items-center  overflow-hidden mt-20">
+      <div ref={containerRef} className="flex md:flex-row flex-col overflow-x-hidden scroll-snap-type-x-mandatory" style={{ scrollBehavior: 'smooth', WebkitOverflowScrolling: 'touch' }}>
         {cardsData.map((card) => (
-          <div key={card.id} className="w-1/3 px-4 flex-none scroll-snap-align-start">
+          <div key={card.id} className="md:w-1/3 m-2 gap-2 w-full   px-4 flex-none scroll-snap-align-start">
             <div className=" p-4 bg-gradient-to-b from-gray-700 to-black shadow-md shadow-blacks border b border-gray-500 rounded-lg">
               <img src={card.avatarUrl} alt="Avatar" className="rounded-full mx-auto mb-4" />
               <p className="text-center text-white font-bold">{card.name}</p>

@@ -143,11 +143,11 @@ function LoginPage() {
   // );
 
   return (
-    <div>
+    <div className="min-h-screen">
       <div>
-        <section class="bg-gray-50 bg-gradient-to-t from-gray-700 to-black">
-          <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-            <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+        <section class="min-h-screen  bg-gray-50 bg-gradient-to-t from-gray-700 to-black">
+          <div class="flex flex-col items-center justify-center align-middle px-6 py-8 mx-auto md:h-screen lg:py-0">
+            <div class="w-full bg-white rounded-lg shadow dark:border mt-20 md:mt-0  sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
               <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                 <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                   Log in to your account
