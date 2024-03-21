@@ -36,13 +36,13 @@ const Navbar = () => {
         {/* Mobile menu button */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="text-white text-2xl md:hidden"
+          className="text-white text-2xl lg:hidden"
         >
           <FaBars />
         </button>
 
         {
-          <div className="lex gap-2 md:block lg:block hidden ">
+          <div className="lex gap-2  lg:block hidden ">
             <Link to="/" className="nav-link py-2 px-4 hover:bg-gray-700">
               Home
             </Link>
