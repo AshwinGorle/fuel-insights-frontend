@@ -42,27 +42,27 @@ const Navbar = () => {
         </button>
 
         {
-          <div className="lex gap-2  lg:block hidden ">
-            <Link to="/" className="nav-link py-2 px-4 hover:bg-gray-700">
+          <div className="lex gap-2  lg:block hidden text-xl ">
+            <Link to="/" className="nav-link py-2 px-3 hover:bg-gray-700">
               Home
             </Link>
             {user && (
               <>
                 <Link
                   to="/dashboard"
-                  className="nav-link py-2 px-4 hover:bg-gray-700"
+                  className="nav-link py-2 px-3 hover:bg-gray-700"
                 >
                   Dashboard
                 </Link>
                 <Link
                   to="/tripAnalysis"
-                  className="nav-link py-2 px-4 hover:bg-gray-700"
+                  className="nav-link py-2 px-3 hover:bg-gray-700"
                 >
                   Trip Analysis
                 </Link>
                 <Link
                   to="/liveTracking"
-                  className="nav-link py-2 px-4 hover:bg-gray-700"
+                  className="nav-link py-2 px-3 hover:bg-gray-700"
                 >
                   Live Tracking
                 </Link>
@@ -70,20 +70,20 @@ const Navbar = () => {
             )}
             <Link
               to="/aboutus"
-              className="nav-link py-2 px-4 hover:bg-gray-700"
+              className="nav-link py-2 px-3 hover:bg-gray-700"
             >
               About Us
             </Link>
             <Link
               to="/contactus"
-              className="nav-link py-2 px-4 hover:bg-gray-700"
+              className="nav-link py-2 px-3 hover:bg-gray-700"
             >
               Contact Us
             </Link>
             {user ? (
               <button
                 onClick={() => handleLogout()}
-                className="nav-link py-2 px-4 hover:bg-gray-700 cursor-pointer"
+                className="nav-link py-2 px-3 hover:bg-gray-700 cursor-pointer"
               >
                 Logout
               </button>
@@ -152,7 +152,7 @@ const Navbar = () => {
           {user ? (
             <button
               onClick={() => handleLogout()}
-              className="nav-link py-2 px-4 hover:bg-gray-700 cursor-pointer"
+              className="nav-link py-2 px-4 hover:bg-gray-700 "
             >
               Logout
             </button>
