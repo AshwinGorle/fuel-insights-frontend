@@ -29,14 +29,14 @@ const HomePage = () => {
       ></video>
       {/* tagline and description */}
       {/* <div className=" absolute top-20 w-full h-full left-0 "></div> */}
-      <div className=" relative z-50 w-full flex flex-col items-center text-white  p-4">
+      <div className=" relative z-50 w-full flex flex-col items-center text-white  p-4 gap-3">
         <div className="">
           <div className="animate-pulse text-wrap text-center md:text-2xl text-lg font-bold font-Lexend">
             Fuel Insights: Protecting Every Drop, Preventing Every Drain
           </div>
         </div>
         {
-          <div className="absolute lg:mt-16 mt-24">
+          <div className="">
             {!user && (
               <Link to="/login">
                 <a
